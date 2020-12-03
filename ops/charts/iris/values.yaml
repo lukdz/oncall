@@ -5,7 +5,7 @@ replicaCount: 1
 
 irisService:
   externalPort: 80
-  internalPort: 16649
+  internalPort: 8080
 
 mysql:
   mysqlUser: "iris"
