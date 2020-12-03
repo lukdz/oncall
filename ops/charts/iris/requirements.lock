@@ -1,10 +1,6 @@
 dependencies:
-- condition: ""
-  enabled: false
-  import-values: null
-  name: mysql
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  tags: null
-  version: 0.2.6
-digest: sha256:245cce1d247a786d2e4587dcc2bb7b10b99b2995421865d9debb932362cbf557
-generated: 2017-04-24T15:27:03.784232575-07:00
+- name: mysql
+  repository: https://charts.bitnami.com/bitnami
+  version: 8.0.0
+digest: sha256:290300d7be7bcc2a1d5d9da973d66c21167a56e924b7140d376a06f88f74fd8a
+generated: "2020-12-03T11:55:11.445613061+01:00"
