@@ -4,8 +4,8 @@ pullPolicy: "alwaysPull"
 replicaCount: 1
 
 irisService:
-  externalPort: 80
-  internalPort: 8080
+  externalPort: "80"
+  internalPort: "8080"
 
 mysql:
   auth:
