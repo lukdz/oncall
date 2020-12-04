@@ -37,3 +37,11 @@ spec:
                   key: mysql-root-password
             - name: IRIS_CFG_DB_HOST
               value: {{ template "mysql.fullname" . }}
+          volumeMounts:
+            - name: oncall-volume
+              mountPath: /home/oncall/config
+              readOnly: true
+      volumes:
+        - name: oncall-volume
+          configMap:
+            name: oncall-config
