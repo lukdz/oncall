@@ -8,5 +8,4 @@ irisService:
   internalPort: "8080"
 
 mysql:
-  auth:
-    rootPassword: "1234"
+  rootPassword: "1234"
