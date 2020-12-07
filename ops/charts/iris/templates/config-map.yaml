@@ -4,4 +4,4 @@ metadata:
   name: oncall-config
 data:
   config.yaml: |-
-{{ .Files.Get "config/config.yaml" | replace "MYSQL_FULLNAME" (include "mysql.fullname" .) | replace "MYSQL_ROOT_PASSWORD" (.Values.mysql.rootPassword | quote) | replace "INTERNAL_PORT" (.Values.irisService.internalPort) | nindent 4 }}
+{{ tpl (.Files.Get "config/config.yaml") . | nindent 4 }}

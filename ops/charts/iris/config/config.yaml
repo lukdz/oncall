@@ -3,16 +3,16 @@
 #######################
 server:
   host: 0.0.0.0
-  port: INTERNAL_PORT
-oncall_host: http://localhost:INTERNAL_PORT
+  port: {{ .Values.irisService.internalPort }}
+oncall_host: http://localhost:{{ .Values.irisService.internalPort }}
 metrics: dummy
 db:
   conn:
     kwargs:
       scheme: mysql+pymysql
       user: root
-      password: MYSQL_ROOT_PASSWORD
-      host: MYSQL_FULLNAME
+      password: {{ .Values.mysql.auth.rootPassword | quote }}
+      host: {{ include "mysql.fullname" . }}
       port: 3306
       database: oncall
       charset: utf8
@@ -151,7 +151,7 @@ header_color: '#3a3a3a'
 # The base url for the public oncall calendar. This url has to open to the public internet for most web calendar subscriptions to work.
 # The public calendar url will be formatted as follows: "{public_calendar_base_url}/{ical_key}".
 # Replace localhost with the hostname of the oncall or iris-relay instance.
-public_calendar_base_url: 'http://localhost:INTERNAL_PORT/api/v0/ical'
+public_calendar_base_url: 'http://localhost:{{ .Values.irisService.internalPort }}/api/v0/ical'
 # Additional message you want to put here, could be a link to the FAQ
 public_calendar_additional_message: 'Link to FAQ'
 
