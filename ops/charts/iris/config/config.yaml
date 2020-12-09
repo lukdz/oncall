@@ -11,7 +11,7 @@ db:
     kwargs:
       scheme: mysql+pymysql
       user: root
-      password: {{ .Values.mysql.auth.rootPassword | quote }}
+      password: {{ .Values.mysql.mysqlRootPassword | quote }}
       host: {{ include "mysql.fullname" . }}
       port: 3306
       database: oncall

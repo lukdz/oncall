@@ -8,5 +8,4 @@ oncallService:
   internalPort: 8080
 
 mysql:
-  auth:
-    rootPassword: "1234"
+  mysqlRootPassword: "1234"
