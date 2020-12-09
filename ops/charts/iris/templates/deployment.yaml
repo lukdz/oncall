@@ -28,15 +28,6 @@ spec:
           env:
             - name: DOCKER_DB_BOOTSTRAP
               value: '1'
-            - name: oncall_CFG_DB_USER
-              value: root
-            - name: oncall_CFG_DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ template "mysql.fullname" . }}
-                  key: mysql-root-password
-            - name: oncall_CFG_DB_HOST
-              value: {{ template "mysql.fullname" . }}
           volumeMounts:
             - name: oncall-volume
               mountPath: /home/oncall/config
