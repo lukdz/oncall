@@ -3,7 +3,7 @@ dockerTag: "latest"
 pullPolicy: "alwaysPull"
 replicaCount: 1
 
-irisService:
+oncallService:
   externalPort: 80
   internalPort: 8080
 

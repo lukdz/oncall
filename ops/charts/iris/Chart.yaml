@@ -1,14 +1,14 @@
-name: iris
+name: oncall
 version: 0.0.1
 description: Distributed messaging and paging and incident management system
 keywords:
   - paging
   - messaging
   - incident management
-home: https://github.com/linkedin/iris
+home: https://github.com/linkedin/oncall
 sources:
-  - https://github.com/linkedin/iris
-  - https://github.com/linkedin/iris-relay
+  - https://github.com/linkedin/oncall
+  - https://github.com/linkedin/oncall-relay
 engine: gotpl
-icon: https://raw.githubusercontent.com/linkedin/iris/master/src/iris/ui/static/images/iris.svg
+icon: https://raw.githubusercontent.com/linkedin/oncall/master/src/oncall/ui/static/images/oncall.svg
 appVersion: 0.0.14

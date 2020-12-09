@@ -3,10 +3,10 @@ kind: Deployment
 metadata:
   name: {{ template "fullname" . }}
   labels:
-    iris-component: api
-    iris-component: web
-    iris-component: sender
-    iris-version: {{ .Chart.AppVersion }}
+    oncall-component: api
+    oncall-component: web
+    oncall-component: sender
+    oncall-version: {{ .Chart.AppVersion }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     app: {{ template "fullname" . }}
 spec:
@@ -20,22 +20,22 @@ spec:
         app: {{ template "fullname" . }}
     spec:
       containers:
-        - name: iris
-          image: {{ .Values.imageRegistry }}/iris:{{.Values.dockerTag}}
+        - name: oncall
+          image: {{ .Values.imageRegistry }}/oncall:{{.Values.dockerTag}}
           imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
           ports:
-            - containerPort: {{ .Values.irisService.internalPort }}
+            - containerPort: {{ .Values.oncallService.internalPort }}
           env:
             - name: DOCKER_DB_BOOTSTRAP
               value: '1'
-            - name: IRIS_CFG_DB_USER
+            - name: oncall_CFG_DB_USER
               value: root
-            - name: IRIS_CFG_DB_PASSWORD
+            - name: oncall_CFG_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ template "mysql.fullname" . }}
                   key: mysql-root-password
-            - name: IRIS_CFG_DB_HOST
+            - name: oncall_CFG_DB_HOST
               value: {{ template "mysql.fullname" . }}
           volumeMounts:
             - name: oncall-volume
