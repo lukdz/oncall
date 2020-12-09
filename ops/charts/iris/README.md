@@ -1,10 +1,10 @@
-Iris chart
+Oncall chart
 ==========
 
 Usage
 -----
 
 ```
-helm dependency build
-helm install --name FOO .
+helm3 dep update
+helm3 install oncall . -n test
 ```

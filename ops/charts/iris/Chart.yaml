@@ -1,14 +1,13 @@
 name: oncall
 version: 0.0.1
-description: Distributed messaging and paging and incident management system
+description: Calendar tool designed for scheduling and managing on-call shifts
 keywords:
-  - paging
-  - messaging
-  - incident management
-home: https://github.com/linkedin/oncall
+  - calendar
+  - schedule
+  - shifts management
+home: https://oncall.tools
 sources:
   - https://github.com/linkedin/oncall
-  - https://github.com/linkedin/oncall-relay
 engine: gotpl
-icon: https://raw.githubusercontent.com/linkedin/oncall/master/src/oncall/ui/static/images/oncall.svg
+icon: https://raw.githubusercontent.com/linkedin/oncall/master/src/oncall/ui/static/images/favicon.png
 appVersion: 0.0.14
