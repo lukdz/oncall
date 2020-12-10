@@ -6,6 +6,7 @@ replicaCount: 1
 oncallService:
   externalPort: 80
   internalPort: 8080
+  dbInitialized: false
 
 mysql:
   auth:

@@ -26,8 +26,10 @@ spec:
           ports:
             - containerPort: {{ .Values.oncallService.internalPort }}
           env:
+            {{- if not .Values.oncallService.dbInitialized }}
             - name: DOCKER_DB_BOOTSTRAP
               value: '1'
+            {{- end }}
           volumeMounts:
             - name: oncall-volume
               mountPath: /home/oncall/config
