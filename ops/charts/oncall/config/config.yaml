@@ -78,10 +78,11 @@ auth:
   ldap_search_filter: {{ .Values.oncallService.auth.ldap_search_filter | squote }}
   {{- end }}
 # options used by the ldap_import module.
+  {{- if kindIs "bool" .Values.oncallService.auth.import_user }}
   import_user: {{ .Values.oncallService.auth.import_user | toString | title }}
+  {{- end }}
   {{- if .Values.oncallService.auth.attrs }}
   attrs:
-  {{- end }}
     {{- if .Values.oncallService.auth.attrs.username }}
     username: {{ .Values.oncallService.auth.attrs.username | squote }}
     {{- end }}
@@ -103,6 +104,7 @@ auth:
     {{- if .Values.oncallService.auth.attrs.name }}
     name: {{ .Values.oncallService.auth.attrs.name | squote }}
     {{- end }}
+  {{- end }}
 
 ############################
 ### Oncall-notifier settings
@@ -132,6 +134,7 @@ reminder:
   activated: True
   polling_interval: 360  # In seconds, the reminder will poll DB for events every $n seconds
   default_timezone: {{ .Values.oncallService.timezone | squote }}  # Dates/times in the reminders are formatted in this timezone
+
 
 # User validator checks that people scheduled for on-call events have defined phone numbers
 user_validator:
