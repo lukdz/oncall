@@ -92,8 +92,8 @@ auth:
     {{- if .Values.oncallService.auth.attrs.email }}
     email: {{ .Values.oncallService.auth.attrs.email | squote }}
     {{- end }}
-    {{- if .Values.oncallService.auth.attrs.mobile }}
-    mobile: {{ .Values.oncallService.auth.attrs.mobile | squote }}
+    {{- if .Values.oncallService.auth.attrs.call }}
+    call: {{ .Values.oncallService.auth.attrs.call | squote }}
     {{- end }}
     {{- if .Values.oncallService.auth.attrs.sms }}
     sms: {{ .Values.oncallService.auth.attrs.sms | squote }}
