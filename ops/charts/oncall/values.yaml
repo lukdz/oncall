@@ -1,5 +1,6 @@
-imageRegistry: "quay.io/iris"
-dockerTag: "latest"
+image:
+  repository: "quay.io/iris"
+  tag: "latest"
 pullPolicy: "alwaysPull"
 replicaCount: 1
 
