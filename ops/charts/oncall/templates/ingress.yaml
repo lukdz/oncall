@@ -13,7 +13,7 @@ spec:
       http:
         paths:
         - backend:
-            serviceName: {{ template "fullname" . }}
+            serviceName: {{ template "name" . }}
             servicePort: {{ .Values.oncallService.externalPort }}
           path: /
     {{- end }}
