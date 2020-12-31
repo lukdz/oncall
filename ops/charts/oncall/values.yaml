@@ -9,6 +9,16 @@ oncallService:
   internalPort: 8080
   dbInitialized: false
 
+ingress:
+  enabled: False
+  class: nginx
+  certManager: True
+  hostname: "test.com"
+  tls: True
+
 mysql:
   auth:
     rootPassword: "1234"
+  primary:
+    persistence:
+      size: 1Gi
