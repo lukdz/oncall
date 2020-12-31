@@ -41,6 +41,10 @@ spec:
               port: {{ .Values.service.internalPort }}
             initialDelaySeconds: 60
             periodSeconds: 10
+      initContainers:
+        - name: init-oncall
+          image: busybox:latest
+          command: ['sh', '-c', "until nslookup {{ include "mysql.fullname" . }}; do echo waiting for mysql; sleep 2; done; sleep 20"]
       volumes:
         - name: oncall-volume
           configMap:
