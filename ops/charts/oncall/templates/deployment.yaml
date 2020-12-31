@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: oncall
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
           ports:
             - containerPort: {{ .Values.service.internalPort }}
@@ -32,12 +32,13 @@ spec:
             {{- end }}
           volumeMounts:
             - name: oncall-volume
-              mountPath: /home/oncall/config
+              mountPath: /home/oncall/config/config.yaml
+              subPath: config.yaml
               readOnly: true
           readinessProbe:
             httpGet:
               path: /healthcheck
-              port: 8080
+              port: {{ .Values.service.internalPort }}
             initialDelaySeconds: 60
             periodSeconds: 10
       volumes:
