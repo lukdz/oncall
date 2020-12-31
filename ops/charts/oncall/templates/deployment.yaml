@@ -34,12 +34,6 @@ spec:
             - name: oncall-volume
               mountPath: /home/oncall/config
               readOnly: true
-          readinessProbe:
-            httpGet:
-              path: /healthcheck
-              port: 8080
-            initialDelaySeconds: 60
-            periodSeconds: 10
       volumes:
         - name: oncall-volume
           configMap:
