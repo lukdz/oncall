@@ -1,6 +1,6 @@
 ## For internal access
 
-The Oncall service can be accessed via port {{ .Values.oncallService.externalPort }} on the following DNS names from within your cluster:
+The Oncall service can be accessed via port {{ .Values.service.externalPort }} on the following DNS names from within your cluster:
 
     `oncall` or `oncall.{{ .Release.Namespace }}.svc.cluster.local`
 

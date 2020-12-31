@@ -10,8 +10,8 @@ metadata:
 spec:
   ports:
     - name: {{ template "name" . }}
-      port: {{ .Values.oncallService.externalPort }}
-      targetPort: {{ .Values.oncallService.internalPort }}
+      port: {{ .Values.service.externalPort }}
+      targetPort: {{ .Values.service.internalPort }}
       protocol: TCP
   selector:
     app: {{ template "fullname" . }}

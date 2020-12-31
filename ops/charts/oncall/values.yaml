@@ -4,7 +4,7 @@ image:
 pullPolicy: "alwaysPull"
 replicaCount: 1
 
-oncallService:
+service:
   externalPort: 80
   internalPort: 8080
   dbInitialized: False

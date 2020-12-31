@@ -24,9 +24,9 @@ spec:
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
           ports:
-            - containerPort: {{ .Values.oncallService.internalPort }}
+            - containerPort: {{ .Values.service.internalPort }}
           env:
-            {{- if not .Values.oncallService.dbInitialized }}
+            {{- if not .Values.service.dbInitialized }}
             - name: DOCKER_DB_BOOTSTRAP
               value: '1'
             {{- end }}
