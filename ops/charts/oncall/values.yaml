@@ -8,6 +8,13 @@ oncallService:
   externalPort: 80
   internalPort: 8080
   dbInitialized: false
+  auth:
+    debug: True
+    modules:
+      debug: True
+      ldap_example: False
+      ldap_import: False
+  timezone: 'US/Pacific'
 
 ingress:
   enabled: False
