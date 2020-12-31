@@ -44,4 +44,4 @@ spec:
       volumes:
         - name: oncall-volume
           configMap:
-            name: oncall-config
+            name: {{ include "fullname" . }}
