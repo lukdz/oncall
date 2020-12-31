@@ -44,66 +44,12 @@ debug: True
 # class, with two required methods: __init__(self, config) and
 # authenticate(self, username, password)
 auth:
-  debug: {{ .Values.oncallService.auth.debug | toString | title }}
-  {{- if .Values.oncallService.auth.modules.debug }}
-  module: 'oncall.auth.modules.debug'  # Auth module where Authenticator is implemented
-  {{- end }}
+  debug: {{ .Values.oncallService.auth.debug }}
+  module: 'oncall.auth.modules.{{ .Values.oncallService.auth.module }}'
 
 # Example configuration for LDAP-based auth
-  {{- if .Values.oncallService.auth.modules.ldap_example }}
-  module: 'oncall.auth.modules.ldap_example'
-  {{- end }}
-  {{- if .Values.oncallService.auth.modules.ldap_import }}
-  module: 'oncall.auth.modules.ldap_import' # for automatically import user at first connexion
-  {{- end }}
-  {{- if .Values.oncallService.auth.ldap_url }}
-  ldap_url: {{ .Values.oncallService.auth.ldap_url | squote }}
-  {{- end }}
-  {{- if .Values.oncallService.auth.ldap_user_suffix }}
-  ldap_user_suffix: {{ .Values.oncallService.auth.ldap_user_suffix | squote }}
-  {{- end }}
-  {{- if .Values.oncallService.auth.ldap_cert_path }}
-  ldap_cert_path: {{ .Values.oncallService.auth.ldap_cert_path | squote }}
-  {{- end }}
-  {{- if .Values.oncallService.auth.ldap_bind_user }}
-  ldap_bind_user: {{ .Values.oncallService.auth.ldap_bind_user | squote }}
-  {{- end }}
-  {{- if .Values.oncallService.auth.ldap_bind_password }}
-  ldap_bind_password: {{ .Values.oncallService.auth.ldap_bind_password | squote }}
-  {{- end }}
-  {{- if .Values.oncallService.auth.ldap_base_dn }}
-  ldap_base_dn: {{ .Values.oncallService.auth.ldap_base_dn | squote }}
-  {{- end }}
-  {{- if .Values.oncallService.auth.ldap_search_filter }}
-  ldap_search_filter: {{ .Values.oncallService.auth.ldap_search_filter | squote }}
-  {{- end }}
-# options used by the ldap_import module.
-  {{- if kindIs "bool" .Values.oncallService.auth.import_user }}
-  import_user: {{ .Values.oncallService.auth.import_user | toString | title }}
-  {{- end }}
-  {{- if .Values.oncallService.auth.attrs }}
-  attrs:
-    {{- if .Values.oncallService.auth.attrs.username }}
-    username: {{ .Values.oncallService.auth.attrs.username | squote }}
-    {{- end }}
-    {{- if .Values.oncallService.auth.attrs.full_name }}
-    full_name: {{ .Values.oncallService.auth.attrs.full_name | squote }}
-    {{- end }}
-    {{- if .Values.oncallService.auth.attrs.email }}
-    email: {{ .Values.oncallService.auth.attrs.email | squote }}
-    {{- end }}
-    {{- if .Values.oncallService.auth.attrs.call }}
-    call: {{ .Values.oncallService.auth.attrs.call | squote }}
-    {{- end }}
-    {{- if .Values.oncallService.auth.attrs.sms }}
-    sms: {{ .Values.oncallService.auth.attrs.sms | squote }}
-    {{- end }}
-    {{- if .Values.oncallService.auth.attrs.slack }}
-    slack: {{ .Values.oncallService.auth.attrs.slack | squote }}
-    {{- end }}
-    {{- if .Values.oncallService.auth.attrs.name }}
-    name: {{ .Values.oncallService.auth.attrs.name | squote }}
-    {{- end }}
+  {{- if .Values.oncallService.auth.config }}
+  {{- toYaml .Values.oncallService.auth.config | nindent 2 }}
   {{- end }}
 
 ############################
