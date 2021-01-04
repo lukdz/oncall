@@ -24,9 +24,9 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
           ports:
-            - containerPort: {{ .Values.service.internalPort }}
+            - containerPort: {{ .Values.port.internal }}
           env:
-            {{- if not .Values.service.dbInitialized }}
+            {{- if not .Values.dbInitialized }}
             - name: DOCKER_DB_BOOTSTRAP
               value: '1'
             {{- end }}
@@ -38,7 +38,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /healthcheck
-              port: {{ .Values.service.internalPort }}
+              port: {{ .Values.port.internal }}
             initialDelaySeconds: 60
             periodSeconds: 10
       initContainers:

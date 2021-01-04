@@ -4,14 +4,17 @@ image:
 pullPolicy: "alwaysPull"
 replicaCount: 1
 
-service:
-  externalPort: 80
-  internalPort: 8080
-  dbInitialized: False
+port:
+  external: 80
+  internal: 8080
+
+dbInitialized: false
+
+config:
   auth:
-    debug: True
+    debug: true
     module: debug
-    # config:
+    # ldap:
     #   ldap_url: 'ldaps://example.com'
     #   ldap_user_suffix: '@example.biz'
     #   ldap_cert_path: '/etc/ldap_cert.pem'
@@ -30,10 +33,10 @@ service:
   timezone: 'US/Pacific'
 
 ingress:
-  enabled: False
+  enabled: false
   class: nginx
   certManager: True
-  hostname: "test.com"
+  hostname: "oncall.local"
   tls: True
 
 mysql:
